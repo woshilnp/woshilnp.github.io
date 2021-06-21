@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/20201224102144.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>python基础知识 - w0s1np&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Lnh's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="python基础知识">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-06 17:19" pubdate>
+        April 6, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python基础知识</h1>
+            
+            <div class="markdown-body">
+              <h2 id="python基础知识"><a href="#python基础知识" class="headerlink" title="python基础知识"></a>python基础知识</h2><h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><ol>
+<li><p>安装第三方库</p>
+<p><code>python3 -m pip install flask_waf</code></p>
+</li>
+<li><p>Python标准库常见模块</p>
+<p>python解释器相关：sys</p>
+<p>操作系统：os</p>
+<p>json加载生成：json</p>
+<p>正则表达式：re</p>
+<p>随机数：random</p>
+<p>多线程：multiprocessing</p>
+<p>爬虫：bs4</p>
+</li>
+<li><p>Python第三方开源库常见模块（需安装）</p>
+<p>网页爬取：scrapy、requests、BeautifulSoup</p>
+<p>WEB服务：django、flask</p>
+<p>数据库：PyMySQL、redis</p>
+<p>Excel读写：xlrd、xlwt</p>
+<p>大数据：PySpark</p>
+<p>数据计算：numpy、scipy</p>
+<p>图表展示：matplotlib</p>
+<p>机器学习：scikit-learn</p>
+<p>深度学习：百度PaddlePaddle、谷歌TensorFlow</p>
+</li>
+</ol>
+<h3 id="requests库"><a href="#requests库" class="headerlink" title="requests库"></a>requests库</h3><ol>
+<li><p>HTTP请求方式：</p>
+<p><code>request.get</code>   <code>request.post</code>  …</p>
+</li>
+<li><p>传递参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;...&#x27;</span><br>data = &#123;<br>    <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;w0s1np&#x27;</span>,<br>    <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-number">18</span><br>&#125;<br>headers = &#123;<br>    <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0&#x27;</span>,<br>    <span class="hljs-string">&#x27;Request Method&#x27;</span>:<span class="hljs-string">&#x27;Get&#x27;</span><br>&#125;<br>r = requests.get(<span class="hljs-string">&#x27;url&#x27;</span>, params = data,headers = headers)<br></code></pre></td></tr></table></figure></li>
+<li><p>响应网页内容：</p>
+<p><code>r.text</code>   <code>r.content #会自动为你解码 gzip 和 deflate 压缩,是http响应内容的二进制形式</code></p>
+</li>
+<li><p>网页状态码：</p>
+<p><code>r.status_code</code></p>
+</li>
+<li><p>响应头headers：</p>
+<p><code>r.headers</code></p>
+</li>
+<li><p>响应内容编码方式：</p>
+<p><code>r.encoding #从http的header中猜测的响应内容编码方式</code>   <code>r.apparent_encoding  #从内容中分析出响应的内容编码方式</code></p>
+</li>
+<li><p>设置IP代理：</p>
+<p>目的就是有的网站反爬机制会限制单位时间内同一IP的请求次数，我们可以通过设置 IP proxy代理来应对这个反爬机制。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;...&#x27;</span><br>proxies = &#123;<br>  <span class="hljs-string">&quot;http&quot;</span>: <span class="hljs-string">&#x27;http://...&#x27;</span>,<br>  <span class="hljs-string">&quot;https&quot;</span>: <span class="hljs-string">&#x27;http://...&#x27;</span>,<br>&#125;<br><br>requests.get(<span class="hljs-string">&#x27;url&#x27;</span>, proxies=proxies)<br></code></pre></td></tr></table></figure></li>
+<li><p>cookie问题：</p>
+<p>查看<code>cookie</code>：<code>response.cookies</code></p>
+<p>添加<code>cookie</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;...&#x27;</span><br>headers = &#123;<br>    <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0&#x27;</span><br>&#125;<br><br>cookies = &#123;<span class="hljs-string">&#x27;cookie_name&#x27;</span>: <span class="hljs-string">&#x27;cookie_value&#x27;</span>, &#125;<br>response = requests.get(url, headers = headers, cookies = cookies)<br></code></pre></td></tr></table></figure></li>
+<li><p>session问题：</p>
+<p>为了保持会话的连续，我们一般先创建一个session对象，用它打开一个url</p>
+<p>每当我们使用这个<code>session</code>对象重新打开一个<code>url</code>时，请求头都会带上首次产生的<code>cookie</code>,实现了会话的延续。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;...&#x27;</span><br>headers = &#123;<br>    <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0&#x27;</span><br>&#125;<br><br>r = requests.session()<br>response = r.get(url, headers = headers)<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="SYS模块"><a href="#SYS模块" class="headerlink" title="SYS模块"></a>SYS模块</h3><p>sys模块主要是针对与Python解释器相关的变量和方法，不是主机操作系统。</p>
+<ol>
+<li><p>sys.argv</p>
+<p>sys.argv是一个脚本执行参数列表，列表的第一个元素是脚本名称，从第二个元素开始才是真正的参数。</p>
+</li>
+<li><p>sys.path</p>
+<p>sys.path 类型为list，模块的搜索路径，第一个元素是当前目录，意思是每次会首先搜索当前目录下的模块，用户在程序中可以自己修改sys.path，设置自己的模块搜索路径</p>
+</li>
+<li><p>sys.exit(n) </p>
+<p>sys.exit(n) 退出程序，n等于0代表正常退出，不等于0代表异常退出，在shell可以用$?获得退出值。</p>
+</li>
+</ol>
+<h3 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h3><p>负责程序与操作系统交互，提供访问操作系统底层的接口</p>
+<p>负责程序与操作系统交互，提供访问操作系统底层的接口</p>
+<p>os.environ 字典类型，读取系统环境变量</p>
+<p>os.remove(path) 删除文件</p>
+<p>os.rename(src,dst) 重命名文件或目录，可实现文件移动</p>
+<p>os.mkdir(dir) 创建目录</p>
+<p>os.rmdir(dir) 删除目录，目录必须为空</p>
+<p>os.listdir(path) 返回列表，列出目录下的文件和目录</p>
+<p>os.path.basename(path) 提取路径参数中的文件名</p>
+<p>os.path.dirname(path) 提取路径参数中的目录名</p>
+<p>os.path.split(path) 拆分path为(目录名, 文件名)</p>
+<p>os.path.splitext(path) 拆分path(文件名, 后缀名)</p>
+<p>os.path.exists(path) 判断指定的文件或目录是否存在</p>
+<p>os.path.isdir(path) 判断path参数是否是目录</p>
+<p>os.path.isfile(path) 判断path参数是否是普通文件</p>
+<h3 id="threading-库·"><a href="#threading-库·" class="headerlink" title="threading 库·"></a>threading 库·</h3><p>进程是一段程序，类似于浏览器或者视频播放器</p>
+<p>线程是每个进程的实际运算单元，相当于视频播放器能够同时播放声音和视频</p>
+<p>Python中使用线程有两种方式：函数或者用类来包装线程对象。</p>
+<ol>
+<li><p>函数式：调用thread模块中的start_new_thread()函数来产生新线程。语法如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">thread.start_new_thread ( function, args[, kwargs] )<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>function - 线程函数。</li>
+<li>args - 传递给线程函数的参数,他必须是个tuple类型。</li>
+<li>kwargs - 可选参数。</li>
+</ul>
+</li>
+</ol>
+<p>threading 库提供了 Thread 这一个类，可以创建这一个类的实例进行使用，下面是使用方法：</p>
+<h3 id="Queue模块"><a href="#Queue模块" class="headerlink" title="Queue模块"></a>Queue模块</h3><p>提供了同步的、线程安全的队列类，包括FIFO（先入先出)队列Queue，LIFO（后入先出）队列LifoQueue，和优先级队列PriorityQueue。这些队列都实现了锁原语，能够在多线程中直接使用。可以使用队列来实现线程间的同步。</p>
+<p>Queue模块中的常用方法:</p>
+<ul>
+<li>Queue.qsize() 返回队列的大小</li>
+<li>Queue.empty() 如果队列为空，返回True,反之False</li>
+<li>Queue.full() 如果队列满了，返回True,反之False</li>
+<li>Queue.full 与 maxsize 大小对应</li>
+<li>Queue.get([block[, timeout]])获取队列，timeout等待时间</li>
+<li>Queue.get_nowait() 相当Queue.get(False)</li>
+<li>Queue.put(item) 写入队列，timeout等待时间</li>
+<li>Queue.put_nowait(item) 相当Queue.put(item, False)</li>
+<li>Queue.task_done() 在完成一项工作之后，Queue.task_done()函数向任务已经完成的队列发送一个信号</li>
+<li>Queue.join() 实际上意味着等到队列为空，再执行别的操作 </li>
+</ul>
+<h3 id="bs4库"><a href="#bs4库" class="headerlink" title="bs4库"></a>bs4库</h3><p>Beautiful Soup 库一般被称为bs4库，支持Python3</p>
+<p> <code>bs4</code>库把<code>html</code>源代码重新进行了格式化，就是把<code>html</code>源码转换为树形，好看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>soup = BeautifulSoup(<span class="hljs-string">&quot;&lt;html&gt;A Html Text&lt;/html&gt;&quot;</span>, <span class="hljs-string">&quot;html.parser&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>两个参数：第一个参数是要解析的<code>html</code>文本，第二个参数是使用那种解析器，对于<code>HTML</code>来讲就是<code>html.parser</code>，这个是<code>bs4</code>自带的解析器。</p>
+<p>输出：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">soup.prettify()  <span class="hljs-meta"># prettify 有括号和没括号都可以</span><br></code></pre></td></tr></table></figure>
+
+<p><code>sopu.find_all</code> ：根据标签查找需要的，<code>sopu.find_all(class = &#39;topic-title&#39;)</code>这里就是寻找<code>class</code>标签为<code>topic-title</code>的内容</p>
+<p><code>soup.attrs</code>：获取<code>soup</code>对象的属性，<code>sopu.attrs[&#39;href&#39;]</code>，这里就是获取<code>soup</code>对象的<code>href</code>属性</p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>在学<code>python</code>过程中难免会遇到无数的报错，但是只要我们能看报错在依次解决，编程能力就会提高</p>
+<ol>
+<li><p>在使用<code>requests</code>库爬先知的时候</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>url = <span class="hljs-string">&#x27;https://xz.aliyun.com/&#x27;</span><br>r = requests.get(url)<br>r.encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span><br>html = r.text<br><span class="hljs-built_in">print</span>(html)<br></code></pre></td></tr></table></figure>
+
+<p>遇到报错：<code>HTTPSConnectionPool(host=&#39;xz.aliyun.com&#39;, port=443): Max retries exceeded with url: / (</code></p>
+<p>就几行代码，报错几十行，百度了很久，大部分都是<code>r = requests.get(url,verify=False)</code>，或者安装下面几个包</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip3 <span class="hljs-keyword">install</span> cryptography<br>pip3 <span class="hljs-keyword">install</span> pyOpenSSL<br>pip3 <span class="hljs-keyword">install</span> certifi<br></code></pre></td></tr></table></figure>
+
+<p>我都尝试了，无果，我就在想是不是我的代理有问题呢，我把代理关闭之后，再访问，报错就变化了，只有一行，并且指出了问题解决的网址</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">D:\PYTHON3\lib\site-packages\urllib3\connectionpool.<span class="hljs-keyword">py</span>:<span class="hljs-number">1013</span>: InsecureRequestWarnin<span class="hljs-variable">g:</span> Unverified HTTPS request <span class="hljs-keyword">is</span> being made <span class="hljs-keyword">to</span> host <span class="hljs-string">&#x27;xz.aliyun.com&#x27;</span>. Adding certificate verification <span class="hljs-keyword">is</span> strongly advised. See: http<span class="hljs-variable">s:</span>//urllib3.readthedocs.io/<span class="hljs-keyword">en</span>/latest/advanced-usage.html#ssl-warnings<br>  warnings.warn(<br></code></pre></td></tr></table></figure>
+
+<p>就去该网址查看原因，大概就是<code>TLS Warnings</code>，再执行以下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> urllib3<br><span class="hljs-meta">&gt;&gt;&gt; </span>urllib3.disable_warnings()<br></code></pre></td></tr></table></figure>
+
+<p>运行之后，就可以了，直接使用以下代码就可以爬了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>url = <span class="hljs-string">&#x27;https://xz.aliyun.com/&#x27;</span><br>r = requests.get(url)<br>r.encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span><br>html = r.text<br><span class="hljs-built_in">print</span>(html)<br></code></pre></td></tr></table></figure>
+
+<p>最后总结一下：就是设置的代理有问题，我现在设置代理之后就报错，关闭代理就可以正常运行</p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hexo + github 搭建博客</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/06/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+<!--《添加网站运行时间 -->
+<div>
+  <span id="timeDate">载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("06/04/2021 17:02:00");//此处修改你的建站时间或者网站上线时间
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀 for&nbsp"+dnum+"&nbspdays";  //此次自定义显示内容
+      document.getElementById("times").innerHTML = hnum + "&nbsphr&nbsp" + mnum + "&nbspmin&nbsp" + snum + "&nbspsec";
+  }  //此次自定义显示内容
+  setInterval("createtime()",250);
+  </script>
+</div>
+<!-- 添加网站运行时间》-->
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
