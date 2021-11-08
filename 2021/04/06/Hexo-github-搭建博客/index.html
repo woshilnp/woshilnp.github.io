@@ -5,24 +5,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Hexo + github 搭建博客前言：之前用的服务器搭的博客，wordpress，懂得都懂，太难看了，就搭了个github，随便让以后的学弟能更方便得搭建吧 GIT安装直接去官网下载最新版本，https:&#x2F;&#x2F;git-scm.com&#x2F;downloads,下载完之后可以通过cmd查看版本，就可以检测是否安装成功  Node.js安装去官网下载，https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;，下载完之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + github 搭建博客">
+<meta property="og:url" content="http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="w0s1np&#39;s blog">
+<meta property="og:description" content="Hexo + github 搭建博客前言：之前用的服务器搭的博客，wordpress，懂得都懂，太难看了，就搭了个github，随便让以后的学弟能更方便得搭建吧 GIT安装直接去官网下载最新版本，https:&#x2F;&#x2F;git-scm.com&#x2F;downloads,下载完之后可以通过cmd查看版本，就可以检测是否安装成功  Node.js安装去官网下载，https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;，下载完之">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1szXF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1yZ6O.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1yG1f.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c16N26.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c16zdJ.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c12YPs.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c120qU.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c12gR1.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c12HJA.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1cDyT.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1gaHe.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1gv59.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1RKY9.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/06/c1RrOf.png">
+<meta property="article:published_time" content="2021-04-06T11:25:01.000Z">
+<meta property="article:modified_time" content="2021-04-08T05:05:28.772Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="环境搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/04/06/c1szXF.png">
     
     
+      
         
-            
-                <link rel="shortcut icon" href="/images/favicon.ico">
-            
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-            
-                <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-            
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-            
-                <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-            
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>Hexo + github 搭建博客</title>
@@ -30,59 +57,46 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@2/distr/fira_code.css" rel="stylesheet">
+    <!-- persian styles -->
+    
     <!-- rss -->
     
     
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
-
-    <div id="header-post">
-    <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-    <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-    <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i
-                class="fas fa-chevron-up fa-lg"></i></a>
-    <span id="menu">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
     <span id="nav">
       <ul>
-          
-              <li><a href="/">Home</a></li>
-          
-              <li><a href="/archives/">Articles</a></li>
-          
-              <li><a href="/categories/">Category</a></li>
-          
-              <li><a href="/tags/">Tag</a></li>
-          
-              <li><a href="/about/">About</a></li>
-          
-              <li><a href="/search/">Search</a></li>
-          
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/projects_url">Projects</a></li><!--
+     -->
       </ul>
     </span>
     <br/>
     <span id="actions">
       <ul>
-          
-              <li><a class="icon" href="/2021/04/08/SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/"><i class="fas fa-chevron-left"
-                                                                           aria-hidden="true"
-                                                                           onmouseover="$('#i-prev').toggle();"
-                                                                           onmouseout="$('#i-prev').toggle();"></i></a></li>
-          
-          
-              <li><a class="icon" href="/2021/04/06/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fas fa-chevron-right"
-                                                                           aria-hidden="true"
-                                                                           onmouseover="$('#i-next').toggle();"
-                                                                           onmouseout="$('#i-next').toggle();"></i></a></li>
-          
-          <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i
-                          class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();"
-                          onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true"
-                                        onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();"
-                                        onclick="$('#share').toggle();return false;"></i></a></li>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/04/08/SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/04/06/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -92,17 +106,19 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-    <li><a class="icon"
-           target="_blank" rel="noopener" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i
-                    class="fab fa-qq " aria-hidden="true"></i></a></li>
-    <li><a class="icon"
-           target="_blank" rel="noopener" href="https://service.weibo.com/share/share.php?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i
-                    class="fab fa-weibo " aria-hidden="true"></i></a></li>
-    <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&text=Hexo + github 搭建博客"><i
-                    class="fab fa-twitter " aria-hidden="true"></i></a></li>
-    <li><a class="icon" href="mailto:?subject=Hexo + github 搭建博客&body=Check out this article: http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i
-                    class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&text=Hexo + github 搭建博客"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&is_video=false&description=Hexo + github 搭建博客"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo + github 搭建博客&body=Check out this article: http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&name=Hexo + github 搭建博客&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&t=Hexo + github 搭建博客"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
+
     </div>
     <div id="toc">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">Hexo + github 搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIT%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">GIT安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Node.js安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="toc-number">1.4.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESSH%E5%AF%86%E9%92%A5"><span class="toc-number">1.5.</span> <span class="toc-text">配置SSH密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94github"><span class="toc-number">1.6.</span> <span class="toc-text">关联github</span></a></li></ol></li></ol>
@@ -110,47 +126,46 @@
   </span>
 </div>
 
-<div class="content index py4">
     
-    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-    <header>
+    <div class="content index py4">
         
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
     <h1 class="posttitle" itemprop="name headline">
         Hexo + github 搭建博客
     </h1>
 
-        <div class="meta">
+
+
+    <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">
-            John Doe
-            
-        </span>
+        <span itemprop="name">John Doe</span>
       </span>
-            
+      
     <div class="postdate">
+      
+        <time datetime="2021-04-06T11:25:01.000Z" itemprop="datePublished">2021-04-06</time>
         
-            <time datetime="2021-04-06T11:25:01.000Z"
-                  itemprop="datePublished">2021-04-06</time>
-            
-                (Updated:
-                <time datetime="2021-04-08T05:05:28.772Z"
-                      itemprop="dateModified">2021-04-08</time>)
-            
-        
+      
     </div>
 
-            
-            
+
+      
+
+      
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">环境搭建</a>
     </div>
 
-        </div>
-    </header>
-    
-    <div class="content" itemprop="articleBody">
-        <h2 id="Hexo-github-搭建博客"><a href="#Hexo-github-搭建博客" class="headerlink" title="Hexo + github 搭建博客"></a>Hexo + github 搭建博客</h2><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>之前用的服务器搭的博客，<code>wordpress</code>，懂得都懂，太难看了，就搭了个<code>github</code>，随便让以后的学弟能更方便得搭建吧</p>
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Hexo-github-搭建博客"><a href="#Hexo-github-搭建博客" class="headerlink" title="Hexo + github 搭建博客"></a>Hexo + github 搭建博客</h2><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>之前用的服务器搭的博客，<code>wordpress</code>，懂得都懂，太难看了，就搭了个<code>github</code>，随便让以后的学弟能更方便得搭建吧</p>
 <h3 id="GIT安装"><a href="#GIT安装" class="headerlink" title="GIT安装"></a>GIT安装</h3><p>直接去官网下载最新版本，<code>https://git-scm.com/downloads</code>,下载完之后可以通过cmd查看版本，就可以检测是否安装成功</p>
 <p><img src="https://z3.ax1x.com/2021/04/06/c1szXF.png" alt="aaa"></p>
 <h3 id="Node-js安装"><a href="#Node-js安装" class="headerlink" title="Node.js安装"></a>Node.js安装</h3><p>去官网下载，<code>https://nodejs.org/en/</code>，下载完之后需要添加一下环境，安装完先查看一下版本：</p>
@@ -226,244 +241,142 @@
 <p>我这里遇到一个大坑，就是什么都好了，但就是访问不了，百度了很久，最后还是解决了：</p>
 <p>删除掉<code>.deploy_git</code>文件夹，然后<code>hexo clean ,hexo g -d</code>就好了</p>
 
-    </div>
+  </div>
 </article>
 
 
 
-<script>
-    //检测推送
-    var pushType = "";
-    var pushLink = "";
-    var siteName = "w0s1np&#39;s blog";
-  
-    var ValineButton = document.getElementsByClassName("vsubmit vbtn")[0];
-    //分情况推送
-    if (pushType === "sc") {
-      var title = "text=" + siteName + "上又有新评论啦~!";
-      function send_valine_Server() {
-        //获取元素信息
-        var pagename = document.title;
-        var wz = pagename.indexOf("|");
-        var res = pagename.substring(0, wz);
-        var pageurl = document.URL;
-        var ptime = new Date();
-        var vnick = document.getElementsByClassName("vnick vinput")[0].value;
-        var vmail = document.getElementsByClassName("vmail vinput")[0].value;
-        var vlink = document.getElementsByClassName("vlink vinput")[0].value;
-        var veditor = document.getElementsByClassName("veditor vinput")[0].value;
-        var text = "desp=";
-        var data =
-          text +
-          "|昵称：" +
-          "|邮箱：" +
-          "|网站地址：" +
-          "|当前页面：" +
-          "|评论内容：" +
-          "|跳转链接：" +
-          "|评论时间" +
-          "\n" +
-          "|----|----|----|----|" +
-          "\n" +
-          "|   " +
-          vnick +
-          "   |   " +
-          vmail +
-          "  |  " +
-          vlink +
-          "|   " +
-          res +
-          "| " +
-          veditor +
-          "| " +
-          pageurl +
-          "|" +
-          ptime.toLocaleString() +
-          "|";
-        var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
-        httpRequest.open("POST", pushLink, true); //第二步：打开连接
-        httpRequest.setRequestHeader(
-          "Content-type",
-          "application/x-www-form-urlencoded"
-        ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-        httpRequest.send(title + "&" + data); //发送请求 将情头体写在send中
-      }
-      ValineButton.onclick = send_valine_Server;
-    } else if (pushType === "qmsg") {
-      var title = "msg=" + siteName + "上又有新评论啦~!\n";
-      function send_valine_Qmsg() {
-        //获取元素信息
-        var pagename = document.title;
-        var wz = pagename.indexOf("|");
-        var res = pagename.substring(0, wz);
-        var pageurl = document.URL;
-        var ptime = new Date();
-        var vnick = document.getElementsByClassName("vnick vinput")[0].value;
-        var vmail = document.getElementsByClassName("vmail vinput")[0].value;
-        var vlink = document.getElementsByClassName("vlink vinput")[0].value;
-        var veditor = document.getElementsByClassName("veditor vinput")[0].value;
-        var data =
-          "昵称：" +
-          vnick +
-          "\n邮箱：" +
-          vmail +
-          "\n网站地址：" +
-          vlink +
-          "\n当前页面：" +
-          pagename +
-          "\n评论内容：" +
-          veditor +
-          "\n跳转链接：" +
-          pageurl +
-          "\n评论时间" +
-          ptime.toLocaleString();
-        var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
-        httpRequest.open("POST", pushLink, true); //第二步：打开连接
-        httpRequest.setRequestHeader(
-          "Content-type",
-          "application/x-www-form-urlencoded"
-        ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-        httpRequest.send(title + data); //发送请求 将情头体写在send中
-      }
-      ValineButton.onclick = send_valine_Qmsg;
-    }
-  </script>
-    
-        <div id="footer-post-container">
-    <div id="footer-post">
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-        <div id="nav-footer" style="display: none">
-            <ul>
-                
-                    <li><a href="/">Home</a></li>
-                
-                    <li><a href="/archives/">Articles</a></li>
-                
-                    <li><a href="/categories/">Category</a></li>
-                
-                    <li><a href="/tags/">Tag</a></li>
-                
-                    <li><a href="/about/">About</a></li>
-                
-                    <li><a href="/search/">Search</a></li>
-                
-            </ul>
-        </div>
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
 
-        <div id="toc-footer" style="display: none">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">Hexo + github 搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIT%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">GIT安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Node.js安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="toc-number">1.4.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESSH%E5%AF%86%E9%92%A5"><span class="toc-number">1.5.</span> <span class="toc-text">配置SSH密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94github"><span class="toc-number">1.6.</span> <span class="toc-text">关联github</span></a></li></ol></li></ol>
-        </div>
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">Hexo + github 搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIT%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">GIT安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Node.js安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="toc-number">1.4.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESSH%E5%AF%86%E9%92%A5"><span class="toc-number">1.5.</span> <span class="toc-text">配置SSH密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94github"><span class="toc-number">1.6.</span> <span class="toc-text">关联github</span></a></li></ol></li></ol>
+    </div>
 
-        <div id="share-footer" style="display: none">
-            <ul>
-    <li><a class="icon"
-           target="_blank" rel="noopener" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i
-                    class="fab fa-qq fa-lg" aria-hidden="true"></i></a></li>
-    <li><a class="icon"
-           target="_blank" rel="noopener" href="https://service.weibo.com/share/share.php?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i
-                    class="fab fa-weibo fa-lg" aria-hidden="true"></i></a></li>
-    <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&text=Hexo + github 搭建博客"><i
-                    class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-    <li><a class="icon" href="mailto:?subject=Hexo + github 搭建博客&body=Check out this article: http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i
-                    class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&text=Hexo + github 搭建博客"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&is_video=false&description=Hexo + github 搭建博客"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo + github 搭建博客&body=Check out this article: http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=Hexo + github 搭建博客"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&name=Hexo + github 搭建博客&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/04/06/Hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&t=Hexo + github 搭建博客"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
-        </div>
-
-        <div id="actions-footer">
-            <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i
-                        class="fas fa-bars fa-lg"
-                        aria-hidden="true"></i> Menu</a>
-            <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i
-                        class="fas fa-list fa-lg"
-                        aria-hidden="true"></i> TOC</a>
-            <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i
-                        class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-            <a id="top" style="display:none" class="icon" href="#"
-               onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg"
-                                                                               aria-hidden="true"></i> Top
-            </a>
-        </div>
 
     </div>
-</div>
-    
-    <footer id="footer">
-  <div class="footer-top">
-    &copy; 2021 <i class="fas fa-heart"></i>
-    John Doe 
-    <a href="http://www.beian.miit.gov.cn/" target="_blank">湘ICP备17005082号</a>
-    
-  </div>
 
-  <div class="footer-bottom">
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
-    <!-- tongji -->
-    <script
-      async
-      src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
-    ></script>
-    <span class="site-uv">
-      <i class="fa fa-user"></i> 访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-    <span class="site-pv">
-      <i class="fa fa-eye"></i> 访问总量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-    <br />
-      本网站由
-    <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-       又拍云 
-    </a>
-    提供CDN加速/云存储服务 
+    
+    2016-2021
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/projects_url">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
   </div>
 </footer>
 
-</div>
-<!-- styles -->
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+    </div>
+    <!-- styles -->
 
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
 
-<!-- jquery -->
-
-<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
-<script src="https://cdn.staticfile.org/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
 
 <!-- clipboard -->
 
-    
-<script src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-            // copy-btn HTML
-            var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-            btn += '<i class="far fa-clone"></i>';
-            btn += '</span>';
-            // mount it!
-            $(".highlight .code pre").before(btn);
-            var clip = new ClipboardJS('.btn-copy', {
-                target: function (trigger) {
-                    return trigger.nextElementSibling;
-                }
-            });
-            clip.on('success', function (e) {
-                e.trigger.setAttribute('aria-label', "Copied!");
-                e.clearSelection();
-            })
-        })
-    </script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
 
 <!-- search -->
 
-</body>
+<!-- Google Analytics -->
 
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
 </html>
